@@ -1,14 +1,17 @@
-LIBS_PATH := libs/
+SRC_PATH := src/
 OBJ_PATH := obj/
 INCLUDE_PATH := includes/
 TEST_PATH := test/
-
+LIB_PATH := lib/
 stack_objs:= item.o stack.o
 bitree_objs:= bitree.o
 list_objs:= item.o list.o
 queue_objs:= item.o queue.o
 
-objs:= item.o stack.o bitree.o list.o queue.o
+objs:= $(OBJ_PATH)item.o $(OBJ_PATH)stack.o $(OBJ_PATH)bitree.o $(OBJ_PATH)list.o $(OBJ_PATH)queue.o
+
+build:
+	ar rcs $(LIB_PATH)libds.a $(objs)
 
 init:
 	mkdir obj
@@ -38,17 +41,17 @@ compile-all:$(objs)
 	gcc -c $(OBJ_PATH)bitree.o $(OBJ_PATH)item.o $(OBJ_PATH)list.o $(OBJ_PATH)queue.o $(OBJ_PATH)stack.o -o $(OBJ_PATH)ds-library
 
 bitree.o : $(INCLUDE_PATH)bitree.h
-	gcc -c $(LIBS_PATH)bitree.c -o $(OBJ_PATH)$@ 
+	gcc -c $(SRC_PATH)bitree.c -o $(OBJ_PATH)$@ 
 
 item.o : $(INCLUDE_PATH)item.h
-	gcc -c $(LIBS_PATH)item.c -o $(OBJ_PATH)$@ 
+	gcc -c $(SRC_PATH)item.c -o $(OBJ_PATH)$@ 
 
 list.o : $(INCLUDE_PATH)list.h
-	gcc -c $(LIBS_PATH)list.c -o $(OBJ_PATH)$@ 
+	gcc -c $(SRC_PATH)list.c -o $(OBJ_PATH)$@ 
 
 queue.o : $(INCLUDE_PATH)queue.h
-	gcc -c $(LIBS_PATH)queue.c -o $(OBJ_PATH)$@ 
+	gcc -c $(SRC_PATH)queue.c -o $(OBJ_PATH)$@ 
 
 stack.o : $(INCLUDE_PATH)stack.h
-	gcc -c $(LIBS_PATH)stack.c -o $(OBJ_PATH)$@ 
+	gcc -c $(SRC_PATH)stack.c -o $(OBJ_PATH)$@ 
 
