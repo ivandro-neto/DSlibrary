@@ -18,27 +18,27 @@ init:
 
 start-test-stack: $(stack_objs)
 	
-	gcc $(TEST_PATH)stack.c $(OBJ_PATH)item.o $(OBJ_PATH)stack.o -o $(TEST_PATH)stack-run
+	gcc $(TEST_PATH)stack.c -o $(TEST_PATH)stack-run -L$(LIB_PATH) -lds
 
 start-test-binary:$(bitree_objs)
 	
-	gcc $(TEST_PATH)binarytree.c $(OBJ_PATH)bitree.o -o $(TEST_PATH)binarytree-run
+	gcc $(TEST_PATH)binarytree.c -o $(TEST_PATH)binarytree-run -L$(LIB_PATH) -lds
 
 start-test-list:$(list_objs)
 	
-	gcc $(TEST_PATH)list.c $(OBJ_PATH)item.o $(OBJ_PATH)list.o -o $(TEST_PATH)list-run
+	gcc $(TEST_PATH)list.c -o $(TEST_PATH)list-run -L$(LIB_PATH) -lds
 
 start-test-queue:$(queue_objs)
 	
-	gcc $(TEST_PATH)queue.c $(OBJ_PATH)item.o $(OBJ_PATH)queue.o -o $(TEST_PATH)queue-run
+	gcc $(TEST_PATH)queue.c -o $(TEST_PATH)queue-run -L$(LIB_PATH) -lds
 
-start-test:$(objs)
+start-example:$(objs)
 	
-	gcc main.c $(OBJ_PATH)bitree.o $(OBJ_PATH)item.o $(OBJ_PATH)list.o $(OBJ_PATH)queue.o $(OBJ_PATH)stack.o -o stack-run
+	gcc main.c -o example-run -L$(LIB_PATH) -lds
 
 compile-all:$(objs)
 	
-	gcc -c $(OBJ_PATH)bitree.o $(OBJ_PATH)item.o $(OBJ_PATH)list.o $(OBJ_PATH)queue.o $(OBJ_PATH)stack.o -o $(OBJ_PATH)ds-library
+	gcc -c $(OBJ_PATH)bitree.o $(OBJ_PATH)item.o $(OBJ_PATH)list.o $(OBJ_PATH)queue.o $(OBJ_PATH)stack.o 
 
 bitree.o : $(INCLUDE_PATH)bitree.h
 	gcc -c $(SRC_PATH)bitree.c -o $(OBJ_PATH)$@ 
