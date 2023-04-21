@@ -13,13 +13,9 @@ static int ValueExist(struct node *root, int data)
         else if (data > *(int *)root->data)
             ValueExist(root->right, data);
         else if (data == *(int *)root->data)
-        {
             return 1;
-        }
         else
-        {
             return 0;
-        }
     }
 }
 
@@ -109,10 +105,10 @@ static struct node *deleteNode(struct node *root, int data_key)
             free(root);
             return temp;
         }
+        struct node *new_successor = findSuccessor(root, data_key);
+        root->data = new_successor->data;
 
-        root->data = findSuccessor(root, data_key)->data;
-
-        root->right = deleteNode(root->right, *(int *)findSuccessor(root, data_key)->data);
+        root->right = deleteNode(root->right, *(int *)new_successor->data);
     }
 
     return root;
@@ -180,17 +176,17 @@ void PostOrderTransversal(struct node *focusNode)
 }
 void Maximum(struct node *focusNode)
 {
-    if (focusNode != NULL)
+    if (focusNode->right == NULL)
     {
-        Maximum(focusNode->right);
+        printf("%d -> ", *(int *)focusNode->data);
     }
-    printf("%d -> ", *(int *)focusNode->data);
+    Maximum(focusNode->right);
 }
 void Minimum(struct node *focusNode)
 {
-    if (focusNode != NULL)
+    if (focusNode->left == NULL)
     {
-        Minimum(focusNode->left);
+        printf("%d -> ", *(int *)focusNode->data);
     }
-    printf("%d -> ", *(int *)focusNode->data);
+    Minimum(focusNode->left);
 }
