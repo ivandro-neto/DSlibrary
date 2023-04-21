@@ -40,9 +40,7 @@ Stack* Push(Stack* stack,Item* item)
 void Pop(Stack* stack)
 {
 
-        // Check for stack underflow
         if (stack->top == NULL) {
-            //cout << "\nStack Underflow" << endl;
             exit(1);
         }
         else {
