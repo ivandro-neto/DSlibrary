@@ -43,4 +43,3 @@ void PreOrderTransversal(struct node *);
 void InOrderTransversal(struct node *);
 void PostOrderTransversal(struct node *);
 #endif
-// Implemented by Ivandro Neto

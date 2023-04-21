@@ -109,5 +109,3 @@ int main(int argc, char const *argv[])
     // OUTPUT::1 5 6 9 10 12 20
     return 0;
 }
-
-// Coded by Ivandro Neto
