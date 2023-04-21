@@ -174,19 +174,23 @@ void PostOrderTransversal(struct node *focusNode)
         printf("%d -> ", *(int *)focusNode->data);
     }
 }
-void Maximum(struct node *focusNode)
+void Maximum(struct node *currentNode)
 {
-    if (focusNode->right == NULL)
+    struct node focusNode = *currentNode;
+    while (focusNode.right != NULL)
     {
-        printf("%d -> ", *(int *)focusNode->data);
+        focusNode = *focusNode.right;
     }
-    Maximum(focusNode->right);
+    printf("Maximum Value : %d\n", *(int *)focusNode.data);
 }
-void Minimum(struct node *focusNode)
+void Minimum(struct node *currentNode)
 {
-    if (focusNode->left == NULL)
+    struct node focusNode = *currentNode;
+
+    while (focusNode.left != NULL)
     {
-        printf("%d -> ", *(int *)focusNode->data);
+        focusNode = *focusNode.left;
     }
-    Minimum(focusNode->left);
+
+    printf("Minimum Value : %d\n", *(int *)focusNode.data);
 }
